@@ -1,0 +1,233 @@
+/*===================== GOOGLE FONTS =========================*/
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap");
+/*===================== VARIABLES ======================*/
+/*==================== Breakpoints =====================*/
+/*==================== Colors =====================*/
+/*==================== Font Weights ===============*/
+/*==================== Font Sizes ==================*/
+/*==================== Mixings ===================*/
+/*================== BASE ====================*/
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-size: 13px;
+  font-family: "Manrope", sans-serif;
+  min-height: 100%;
+  background-color: #ecf2f8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+h3,
+h4 {
+  font-weight: 700;
+}
+
+footer {
+  margin-top: 4rem;
+}
+
+/*================= CARD ==============*/
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  flex-wrap: nowrap;
+  max-width: 320px;
+  background-color: #fff;
+  margin-inline: auto;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0px 40px 40px -10px rgba(201, 213, 225, 0.503415);
+  /*==================== RESPONSIVE DESKTOP =====================*/
+}
+.card__img {
+  height: 16em;
+  background: url(/assets/images/drawers.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.card__body {
+  position: relative;
+}
+.card__description {
+  padding: 2rem 2.4em 0;
+  line-height: 1.5;
+}
+.card__description--title {
+  margin-bottom: 1rem;
+  color: #48556a;
+}
+.card__description--text {
+  color: #6d7f97;
+}
+.card__author {
+  width: 100%;
+  padding: 2rem 2.4em 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.card__author--picture {
+  border-radius: 50%;
+  width: 2.5rem;
+  aspect-ratio: 1;
+}
+.card__author--info {
+  margin-left: 1rem;
+  line-height: 1.5;
+}
+.card__author--info h4 {
+  color: #48556a;
+}
+.card__author--info p {
+  color: #6d7f97;
+}
+.card__share {
+  width: 100%;
+  position: absolute;
+  visibility: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  background-color: #48556a;
+  padding: 0 2.4em;
+  bottom: 0;
+  top: calc(100% - 4.5rem);
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.card__share p {
+  flex: 1;
+  color: #9eafc2;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+.card__share .socials {
+  flex: 2.5;
+  line-height: 0;
+}
+.card__share .socials a {
+  padding: 0 0.5em;
+}
+.card__share--show {
+  visibility: visible;
+  opacity: 1;
+}
+@media (min-width: 1200px) {
+  .card {
+    min-width: 41rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: space-between;
+    flex-wrap: nowrap;
+    overflow: visible;
+  }
+  .card__img {
+    height: auto;
+    flex: 1.1;
+    border-radius: 0.75rem 0 0 0.75rem;
+  }
+  .card__body {
+    flex: 1.6;
+  }
+  .card__description--title {
+    font-size: 1.4em;
+  }
+  .card__description--text {
+    font-size: 0.9em;
+  }
+  .card__author {
+    padding-block: 1.5rem;
+  }
+  .card__share {
+    bottom: 5.5rem;
+    left: 209px;
+    width: 270px;
+    padding: 0;
+    top: calc(100% - 8.75rem);
+    border-radius: 0.75rem;
+    box-shadow: 0px 40px 40px -10px rgba(201, 213, 225, 0.503415);
+  }
+  .card__share p {
+    flex: 1 1 50%;
+    text-align: center;
+    padding-left: 1rem;
+    margin-right: -1rem;
+  }
+  .card__share .socials {
+    z-index: 10;
+    flex: 1 1 50%;
+  }
+  .card__share::after {
+    content: "";
+    background-color: inherit;
+    position: absolute;
+    width: 1.75rem;
+    transform: rotate(45deg);
+    aspect-ratio: 1;
+    inset: 32px 17px 0 118px;
+  }
+}
+
+.container {
+  width: 85%;
+  margin: 0 auto;
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 60%;
+  }
+}
+
+/* ===================== BUTTONS ============================*/
+.share-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: absolute;
+  bottom: 1.25rem;
+  right: 32px;
+  background-color: #ecf2f8;
+  width: 2rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  /*============ RESPONSIVE DESKTOP ================*/
+}
+.share-btn--active {
+  background-color: #6d7f97;
+}
+.share-btn--active svg path {
+  fill: #fff;
+}
+.share-btn .share-btn:active {
+  transform: scale(0.9);
+}
+@media (min-width: 1200px) {
+  .share-btn {
+    bottom: 1.75rem;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

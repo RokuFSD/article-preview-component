@@ -1,0 +1,34 @@
+@use 'global' as g;
+
+/* ===================== BUTTONS ============================*/
+
+.share-btn{
+  @include g.flex-container(row, center, center, wrap);
+  position: absolute;
+  bottom: 1.25rem;
+  right: 32px;
+  background-color: g.$light-blue;
+  width: 2rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+
+  &--active{
+    background-color: g.$desaturated-dark-blue;
+
+    svg path{
+      fill: #fff;
+    }
+  }
+
+  .share-btn:active{
+    transform: scale(.9);
+  }
+
+  /*============ RESPONSIVE DESKTOP ================*/
+
+  @include g.respond-to('large'){
+    bottom: 1.75rem;
+  }
+}
+
+

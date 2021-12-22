@@ -1,0 +1,242 @@
+/*===================== GOOGLE FONTS =========================*/
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap");
+
+/*===================== VARIABLES ======================*/
+
+/*==================== Breakpoints =====================*/
+
+$breakpoints: (
+  "medium": (
+    min-wdith: 800px,
+  ),
+  "large": (
+    min-width: 1200px,
+  ),
+);
+
+/*==================== Colors =====================*/
+
+$dark-blue: hsl(217, 19%, 35%);
+$desaturated-dark-blue: hsl(214, 17%, 51%);
+$blue: hsl(212, 23%, 69%);
+$light-blue: hsl(210, 46%, 95%);
+
+/*==================== Font Weights ===============*/
+
+$font-regular: 500;
+$font-bold: 700;
+
+/*==================== Font Sizes ==================*/
+
+$body-font: 13px;
+
+/*==================== Mixings ===================*/
+
+@mixin flex-container($direction, $main, $cross, $wrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $main;
+  align-items: $cross;
+  flex-wrap: $wrap;
+}
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  } @else {
+    @warn 'No value could be retrivied from `#{$breakpoint}`.';
+  }
+}
+
+/*================== BASE ====================*/
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-size: $body-font;
+  font-family: "Manrope", sans-serif;
+  min-height: 100%;
+  background-color: $light-blue;
+  @include flex-container(column, center, center, nowrap);
+}
+
+h3,
+h4 {
+  font-weight: $font-bold;
+}
+
+footer {
+  margin-top: 4rem;
+}
+
+/*================= CARD ==============*/
+
+.card {
+  @include flex-container(column, center, space-between, nowrap);
+  max-width: 320px;
+  background-color: #fff;
+  margin-inline: auto;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0px 40px 40px -10px rgba(201, 213, 225, 0.503415);
+
+  &__img {
+    height: 16em;
+    background: url(/assets/images/drawers.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__body {
+    position: relative;
+  }
+
+  &__description {
+    padding: 2rem 2.4em 0;
+    line-height: 1.5;
+
+    &--title {
+      margin-bottom: 1rem;
+      color: $dark-blue;
+    }
+
+    &--text {
+      color: $desaturated-dark-blue;
+    }
+  }
+
+  &__author {
+    width: 100%;
+    padding: 2rem 2.4em 1rem;
+    @include flex-container(row, flex-start, center, nowrap);
+
+    &--picture {
+      border-radius: 50%;
+      width: 2.5rem;
+      aspect-ratio: 1;
+    }
+
+    &--info {
+      margin-left: 1rem;
+      line-height: 1.5;
+
+      h4 {
+        color: $dark-blue;
+      }
+
+      p {
+        color: $desaturated-dark-blue;
+      }
+    }
+  }
+
+  &__share {
+    width: 100%;
+    position: absolute;
+    visibility: hidden;
+    @include flex-container(row, flex-start, center, nowrap);
+    background-color: $dark-blue;
+    padding: 0 2.4em;
+    bottom: 0;
+    top: calc(100% - 4.5rem);
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+
+    p {
+      flex: 1;
+      color: $blue;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+    }
+
+    .socials {
+      flex: 2.5;
+      line-height: 0;
+
+      a {
+        padding: 0 0.5em;
+      }
+    }
+
+    &--show {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  /*==================== RESPONSIVE DESKTOP =====================*/
+
+  @include respond-to("large") {
+    min-width: 41rem;
+    @include flex-container(row, center, space-between, nowrap);
+    overflow: visible;
+
+    &__img {
+      height: auto;
+      flex: 1.1;
+      border-radius: 0.75rem 0 0 0.75rem;
+    }
+
+    &__body {
+      flex: 1.6;
+    }
+
+    &__description {
+      &--title {
+        font-size: 1.4em;
+      }
+
+      &--text {
+        font-size: 0.9em;
+      }
+    }
+
+    &__author {
+      padding-block: 1.5rem;
+    }
+
+    &__share {
+      bottom: 5.5rem;
+      left: 209px;
+      width: 270px;
+      padding: 0;
+      top: calc(100% - 8.75rem);
+      border-radius: 0.75rem;
+      box-shadow: 0px 40px 40px -10px rgba(201, 213, 225, 0.503415);
+
+      p {
+        flex: 1 1 50%;
+        text-align: center;
+        padding-left: 1rem;
+        margin-right: -1rem;
+      }
+
+      .socials {
+        z-index: 10;
+        flex: 1 1 50%;
+      }
+    }
+
+    &__share::after {
+      content: "";
+      background-color: inherit;
+      position: absolute;
+      width: 1.75rem;
+      transform: rotate(45deg);
+      aspect-ratio: 1;
+      inset: 32px 17px 0 118px;
+    }
+  }
+}

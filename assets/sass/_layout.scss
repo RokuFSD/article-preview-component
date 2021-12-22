@@ -1,0 +1,11 @@
+@use 'global' as g;
+
+.container{
+  width: 85%;
+  margin: 0 auto;
+
+  @include g.respond-to('large'){
+    width: 60%;
+  }
+}
+
